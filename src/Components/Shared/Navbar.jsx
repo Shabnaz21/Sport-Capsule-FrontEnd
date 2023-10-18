@@ -1,93 +1,89 @@
 import { IoLocationSharp } from "react-icons/io5"
-import { Link } from "react-router-dom";
+import { AiOutlineShoppingCart } from "react-icons/ai";
+import { BsTelephone } from "react-icons/bs";
+import { Link, NavLink } from "react-router-dom";
 const Navbar = () => {
+
+    const menus = <>
+        <li><NavLink to='/'>Home</NavLink> </li>
+        <li><NavLink to=''>Products</NavLink> </li>
+        <li><NavLink to=''>Add Products</NavLink> </li>
+        <li><NavLink to=''>Products Update</NavLink> </li>
+        <li><NavLink to=''>Register</NavLink> </li>
+    </>
+    const cart = <>
+        <NavLink to=''><p className="text-md">My cart</p></NavLink>
+    </>
     return (
         <div >
-            <div className="navbar container mx-auto">
-                <div className="flex-1">
-                    <div className="flex items-center gap-3">
-                        <IoLocationSharp className="text-lg"></IoLocationSharp>
-                        <p className="md:text-md font-montserrat">123 Main Street Chicago, IL 60601 USA</p>
+            <div className="hidden lg:block">
+                <div className="navbar container mx-auto">
+                    <div className="flex-1">
+                        <div className="flex items-center gap-3">
+                            <IoLocationSharp className="text-lg"></IoLocationSharp>
+                            <p className="md:text-md">123 Main Street Chicago, IL 60601 USA</p>
+                        </div>
+                    </div>
+                    <div className="flex-none ml-3">
+                        {cart}
                     </div>
                 </div>
-                <div className="flex-none">
-                    <Link><p className="text-md font-montserrat">My cart</p></Link>
-                </div>
-            </div>
+           </div>
             <hr />
             {/* 2nd part */}
             <div className="navbar container mx-auto">
-                <div className="flex-1">
+                <div className="form-control hidden md:block">
+                    <div className="input-group">
+                        <input type="text" placeholder="Enter your keywords ..." className="input input-bordered" />
+                        <button className="btn ">
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+                        </button>
+                    </div>
+                </div>
+                <div className="flex-1 justify-center">
                     <Link><div className="flex items-center">
                         <img src="https://i.ibb.co/QFLk4p3/logo.png" className="w-20 h-14" alt="Logo" />
                         <p className=" font-jost text-red-950 text-xl lg:text-4xl -ml-4">SPORT CAPSULE</p>
                     </div></Link>
-                    
                 </div>
-                <div className="flex-none gap-2">
-                    <div className="form-control">
-                        <input type="text" placeholder="Search" className="input input-bordered w-24 md:w-auto" />
-                    </div>
-                    <div className="dropdown dropdown-end">
-                        <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                            <div className="w-10 rounded-full">
-                                <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-                            </div>
-                        </label>
-                        <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content  rounded-box w-52">
-                            <li>
-                                <a className="justify-between">
-                                    Profile
-                                    <span className="badge">New</span>
-                                </a>
-                            </li>
-                            <li><a>Settings</a></li>
-                            <li><a>Logout</a></li>
-                        </ul>
-                    </div>
+                <div className="justify-end divide-y-4">
+                    {/* <label tabIndex={0} className="btn btn-ghost btn-circle avatar ">
+                        <div className="w-10 rounded-full">
+                            <img src="https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png" />
+                        </div>
+                    </label> */}
+                    <Link to='/login' className="btn bg-[#C1032F] text-white  hover:bg-slate-800 hover:text-white normal-case">Login</Link>
                 </div>
+                <div className="divider md:divider-horizontal"></div> 
+                <p className="text-3xl"><AiOutlineShoppingCart></AiOutlineShoppingCart></p>
             </div>
             <hr />
             {/* menu part */}
-            <div className="navbar ">
-                <div className="navbar-start">
-                    <div className="dropdown">
-                        <label tabIndex={0} className="btn btn-ghost lg:hidden">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
-                        </label>
-                        <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow  rounded-box w-52">
-                            <li><a>Item 1</a></li>
-                            <li>
-                                <a>Parent</a>
-                                <ul className="p-2">
-                                    <li><a>Submenu 1</a></li>
-                                    <li><a>Submenu 2</a></li>
-                                </ul>
-                            </li>
-                            <li><a>Item 3</a></li>
+            <div className="bg-[#303030] text-white text-lg">
+                <div className="navbar container mx-auto">
+                    <div className="navbar-start lg:hidden">
+                        <div className="dropdown">
+                            <label tabIndex={0} className="btn btn-ghost lg:hidden">
+                                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+                            </label>
+                            <ul tabIndex={0} className="menu menu-sm text-black dropdown-content mt-3 z-[1] p-2 shadow  rounded-box w-52">
+                                {menus} {cart}
+                            </ul>
+                        </div>
+                    </div>
+                    <div className="hidden lg:flex navbar-center">
+                        <ul className="menu menu-horizontal px-1 text-lg">
+                            {menus}
                         </ul>
                     </div>
-                    <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+                    <div className="navbar-end lg:hidden">
+                        <div className="flex gap-3 items-center ">
+                            <BsTelephone></BsTelephone>
+                            <p>+1 (312) 555-1234</p>
+                        </div>
+                    </div>
                 </div>
-                <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal px-1">
-                        <li><a>Item 1</a></li>
-                        <li tabIndex={0}>
-                            <details>
-                                <summary>Parent</summary>
-                                <ul className="p-2">
-                                    <li><a>Submenu 1</a></li>
-                                    <li><a>Submenu 2</a></li>
-                                </ul>
-                            </details>
-                        </li>
-                        <li><a>Item 3</a></li>
-                    </ul>
-                </div>
-                <div className="navbar-end">
-                    <a className="btn">Button</a>
-                </div>
-            </div>
+           </div>
         </div>
     );
 };
