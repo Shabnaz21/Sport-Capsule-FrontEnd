@@ -4,7 +4,8 @@ import {
 import Root from "../Root";
 import Home from "../../Pages/Home/Home";
 import Error from "../../Pages/Error/Error";
-import AddProducts from "../../Pages/Products/AddProduct/AddProducts";
+import AddProducts from "../../Pages/Products/AddProducts";
+import UpdateProduct from "../../Pages/Products/UpdateProduct";
 
 const router = createBrowserRouter([
     {
@@ -19,6 +20,9 @@ const router = createBrowserRouter([
             }, {
                 path: '/add-products',
                 element:<AddProducts></AddProducts>
+            }, {
+                path: '/product-update',
+                element:<UpdateProduct></UpdateProduct>
             }
         ]
     },
