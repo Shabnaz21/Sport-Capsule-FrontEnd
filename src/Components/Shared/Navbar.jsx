@@ -7,7 +7,7 @@ const Navbar = () => {
     const menus = <>
         <li><NavLink to='/'>Home</NavLink> </li>
         <li><NavLink to=''>Products</NavLink> </li>
-        <li><NavLink to=''>Add Products</NavLink> </li>
+        <li><NavLink to='/add-products'>Add Products</NavLink> </li>
         <li><NavLink to=''>Products Update</NavLink> </li>
         <li><NavLink to=''>Register</NavLink> </li>
     </>
@@ -52,7 +52,7 @@ const Navbar = () => {
                             <img src="https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png" />
                         </div>
                     </label> */}
-                    <Link to='/login' className="btn bg-[#C1032F] text-white  hover:bg-slate-800 hover:text-white normal-case">Login</Link>
+                    <Link to='/login' className="btn bg-[#C1032F] text-white hover:bg-[#303030] hover:text-white normal-case">Login</Link>
                 </div>
                 <div className="divider md:divider-horizontal"></div> 
                 <p className="text-3xl"><AiOutlineShoppingCart></AiOutlineShoppingCart></p>
