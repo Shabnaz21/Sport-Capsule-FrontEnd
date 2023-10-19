@@ -4,7 +4,6 @@ import BrandCard from "./Brands/BrandCard";
 
 const Home = () => {
     const brands = useLoaderData();
-
     return (
         <div>
             <Banner></Banner>
