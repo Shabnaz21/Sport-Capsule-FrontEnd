@@ -2,14 +2,23 @@ import { IoLocationSharp } from "react-icons/io5"
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { BsTelephone } from "react-icons/bs";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../Hook/AuthProvider/AuthProvider";
+import { useContext } from "react";
+
 const Navbar = () => {
+    const { user, logOut } = useContext(AuthContext);
+
+    const handleSignOut = () => {
+        logOut()
+            .then()
+            .catch()
+    }
 
     const menus = <>
         <li><NavLink to='/'>Home</NavLink> </li>
-        <li><NavLink to=''>Products</NavLink> </li>
         <li><NavLink to='/add-products'>Add Products</NavLink> </li>
         <li><NavLink to='/product-update'>Products Update</NavLink> </li>
-        <li><NavLink to=''>Register</NavLink> </li>
+        <li><NavLink to='/register'>Register</NavLink></li>
     </>
     const cart = <>
         <NavLink to=''><p className="text-md">My cart</p></NavLink>
@@ -47,12 +56,22 @@ const Navbar = () => {
                     </div></Link>
                 </div>
                 <div className="justify-end divide-y-4">
-                    {/* <label tabIndex={0} className="btn btn-ghost btn-circle avatar ">
-                        <div className="w-10 rounded-full">
-                            <img src="https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png" />
-                        </div>
-                    </label> */}
-                    <Link to='/login' className="btn bg-[#C1032F] text-white hover:bg-[#303030] hover:text-white normal-case">Login</Link>
+                    {user ? (
+                        <>
+                            <div className="flex flex-col">
+                                <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                                    <div className="w-10 rounded-full">
+                                        <img width={50} height={50} src={user.photoURL} alt={user.displayName} />
+                                    </div>
+                                </label>
+
+                                <p className="text-gray-700 font-semibold">{user.displayName}</p>
+                            </div>
+                            <button onClick={handleSignOut} className="btn bg-[#C1032F] hover:bg-[#303030] hover:text-white text-white normal-case">Sign Out</button>
+                        </>
+                    ) : (
+                            <Link to='/sign-up' className="btn bg-[#C1032F] text-white hover:bg-[#303030] hover:text-white normal-case">Login</Link>
+                    )}
                 </div>
                 <div className="divider md:divider-horizontal"></div> 
                 <p className="text-3xl"><AiOutlineShoppingCart></AiOutlineShoppingCart></p>

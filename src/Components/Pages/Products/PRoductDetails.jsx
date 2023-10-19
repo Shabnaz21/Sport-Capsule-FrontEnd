@@ -2,6 +2,9 @@ import { useLoaderData } from "react-router-dom";
 
 const ProductDetails = () => {
     const productData = useLoaderData();
+    
+    console.log(productData);
+
     const { name, brand, price, rating, type, description, photo } = productData;
     return (
         <div className="container mx-auto">

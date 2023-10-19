@@ -9,15 +9,23 @@ import './styles.css';
 import { Pagination } from 'swiper/modules';
 import { useEffect, useState } from 'react';
 import ProductCard from '../../Products/ProductCard';
+import { useLoaderData } from 'react-router-dom';
 
 const BrandDetails = () => {
+    const brandsData = useLoaderData();
+    const brandName=brandsData.name;
     const [products, setProducts] = useState([]);
+
     useEffect(() => {
         fetch('http://localhost:5000/products')
             .then(response => response.json())
-            .then(data => setProducts(data))
-
-    },[])
+            .then(data => {
+                const remainingProducts = data.filter(product => product.brand === brandName);
+                setProducts(remainingProducts);
+            })
+        
+    }, [brandName])
+    
     return (
         <div>
             <div>
