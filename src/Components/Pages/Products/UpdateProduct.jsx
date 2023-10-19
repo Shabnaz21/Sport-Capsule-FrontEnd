@@ -1,7 +1,46 @@
+import { useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const UpdateProduct = () => {
+    const productData = useLoaderData();
+    const { _id, name, brand, price, rating, type, photo } = productData;
 
-    
+    const handleUpdateProduct = e => { 
+        e.preventDefault();
+        const form = e.target;
+        const name = form.name.value;
+        const brand = form.brand.value;
+        const price = form.price.value;
+        const rating = form.rating.value;
+        const type = form.type.value;
+        const photo = form.photo.value;
+        const updateProduct = { name, brand, price, rating, type, photo }
+        console.log(updateProduct);
+        form.reset();
+
+        fetch(`http://localhost:5000/products/${_id}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(updateProduct)
+        })
+            .then(response => {
+                return response.json();
+            })
+            .then(data => {
+                console.log(data);
+                if (data.modifiedCount) {
+                    Swal.fire({
+                        title: 'success',
+                        text: 'Product Updated Successfully',
+                        icon: 'success',
+                        confirmButtonText: 'Great'
+                    })
+                }
+            })
+    }
+
     return (
         <>
             <div className="container mx-auto m-20">
@@ -11,14 +50,14 @@ const UpdateProduct = () => {
                         <p className="lg:mx-36">Easily modify product details, including descriptions, images, prices, and availability, ensuring your customers stay up-to-date with the latest sports-inspired fashion trends.</p>
                     </div>
                     <div>
-                        <form className=" lg:mx-40 mt-10 space-y-3">
+                        <form onSubmit={handleUpdateProduct} className=" lg:mx-40 mt-10 space-y-3">
                             <div className="md:flex gap-20 ">
                                 <div className="form-control w-96">
                                     <label className="label">
                                         <span className="text-xl font-semibold">Name</span>
                                     </label>
                                     <label className="input-group ">
-                                        <input type="text" name='name' placeholder="Enter Product Name" className="input p-3 w-full input-bordered" />
+                                        <input type="text" name='name' defaultValue={name}  placeholder="Enter Product Name" className="input p-3 w-full input-bordered" />
                                     </label>
                                 </div>
                                 <div className="form-control w-96">
@@ -26,7 +65,7 @@ const UpdateProduct = () => {
                                         <span className="text-xl font-semibold">Brand Name</span>
                                     </label>
                                     <label className="input-group">
-                                        <input type="text" name='chef' placeholder="Enter Brand Name" className="input p-3 w-full input-bordered" />
+                                        <input type="text" name='brand' defaultValue={brand}  placeholder="Enter Brand Name" className="input p-3 w-full input-bordered" />
                                     </label>
                                 </div>
                             </div>
@@ -37,7 +76,7 @@ const UpdateProduct = () => {
                                         <span className="text-xl font-semibold">Price</span>
                                     </label>
                                     <label className="input-group ">
-                                        <input type="text" name='price' placeholder="$ Enter Product'd Updated Price" className="input p-3 w-full input-bordered" />
+                                        <input type="text" name='price' defaultValue={price} placeholder="$ Enter Product'd Updated Price" className="input p-3 w-full input-bordered" />
                                     </label>
                                 </div>
                                 <div className="form-control w-96">
@@ -45,7 +84,7 @@ const UpdateProduct = () => {
                                         <span className="text-xl font-semibold">Rating</span>
                                     </label>
                                     <label className="input-group">
-                                        <input type="text" name='rating' placeholder="Enter Updated Rating of Product" className="input p-3 w-full input-bordered" />
+                                        <input type="text" name='rating' defaultValue={rating} placeholder="Enter Updated Rating of Product" className="input p-3 w-full input-bordered" />
                                     </label>
                                 </div>
                             </div>
@@ -56,7 +95,7 @@ const UpdateProduct = () => {
                                         <span className="text-xl font-semibold">Type</span>
                                     </label>
                                     <label className="input-group ">
-                                        <input type="text" name='type' placeholder="Enter Product's Type" className="input p-3 w-full input-bordered" />
+                                        <input type="text" name='type' defaultValue={type}  placeholder="Enter Product's Type" className="input p-3 w-full input-bordered" />
                                     </label>
                                 </div>
                                 <div className="form-control w-96">
@@ -64,7 +103,7 @@ const UpdateProduct = () => {
                                         <span className="text-xl font-semibold">Photo</span>
                                     </label>
                                     <label className="input-group">
-                                        <input type="text" name='photo' placeholder="Enter updated Product Photo URL" className="input p-3 w-full input-bordered" />
+                                        <input type="text" name='photo' defaultValue={photo} placeholder="Enter updated Product Photo URL" className="input p-3 w-full input-bordered" />
                                     </label>
                                 </div>
                             </div>
