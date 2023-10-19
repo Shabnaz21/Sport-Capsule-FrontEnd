@@ -17,11 +17,10 @@ const Navbar = () => {
     const menus = <>
         <li><NavLink to='/'>Home</NavLink> </li>
         <li><NavLink to='/add-products'>Add Products</NavLink> </li>
-        <li><NavLink to='/product-update'>Products Update</NavLink> </li>
         <li><NavLink to='/register'>Register</NavLink></li>
     </>
     const cart = <>
-        <NavLink to=''><p className="text-md">My cart</p></NavLink>
+        <NavLink to='/shopping'><p className="text-md">My cart</p></NavLink>
     </>
     return (
         <div >
@@ -78,8 +77,8 @@ const Navbar = () => {
             </div>
             <hr />
             {/* menu part */}
-            <div className="bg-[#303030] text-white text-lg">
-                <div className="navbar container mx-auto">
+            <div className="bg-[#F3ECED] text-lg">
+                <div className="navbar container mx-auto justify-between">
                     <div className="navbar-start lg:hidden">
                         <div className="dropdown">
                             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -90,15 +89,15 @@ const Navbar = () => {
                             </ul>
                         </div>
                     </div>
-                    <div className="hidden lg:flex navbar-center">
+                    <div className="hidden lg:flex ">
                         <ul className="menu menu-horizontal px-1 text-lg">
                             {menus}
                         </ul>
                     </div>
-                    <div className="navbar-end lg:hidden">
-                        <div className="flex gap-3 items-center ">
+                    <div className="navbar-end ">
+                        <div className="flex gap-3 items-center font-semibold ">
                             <BsTelephone></BsTelephone>
-                            <p>+1 (312) 555-1234</p>
+                            <p >+1 (312) 555-1234</p>
                         </div>
                     </div>
                 </div>

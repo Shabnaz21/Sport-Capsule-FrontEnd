@@ -11,6 +11,7 @@ import ProductDetails from "../../Pages/Products/PRoductDetails";
 import PrivateRoutes from "./PrivateRoutes";
 import Login from "../../Pages/auth/Login";
 import Register from "../../Pages/auth/Register";
+import MyCart from "../../Pages/Shopping/MyCart";
 
 
 const router = createBrowserRouter([
@@ -46,9 +47,14 @@ const router = createBrowserRouter([
             {
                 path: '/sign-up',
                 element:<Login></Login>,
-            }, {
+            },
+            {
                 path: '/register',
                 element:<Register></Register>
+            },
+            {
+                path: '/shopping',
+                element:<PrivateRoutes><MyCart></MyCart></PrivateRoutes>
             }
         ]
     },

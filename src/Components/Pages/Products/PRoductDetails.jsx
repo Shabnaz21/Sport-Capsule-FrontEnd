@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 const ProductDetails = () => {
     const productData = useLoaderData();
@@ -12,7 +12,7 @@ const ProductDetails = () => {
                 {/* summary */}
                 <div className="container px-5 py-24 mx-auto">
                     <div className="lg:w-4/5 mx-auto flex flex-wrap">
-                        <img className="lg:w-1/2 w-full object-cover object-center rounded border border-gray-200"
+                        <img className="lg:w-1/2 lg:h-1/2 w-full object-cover object-center rounded border border-gray-200"
                             src={photo} />
                         <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
                             <h2 className="text-sm title-font text-gray-500 tracking-widest">{brand}</h2>
@@ -36,11 +36,13 @@ const ProductDetails = () => {
                                 </div>
                             </div>
 
-                            <div className="flex">
+                            <div className="flex justify-between">
                                 <span className="title-font font-medium text-2xl text-gray-900">$ {price}</span>
-                                <button
-                                    className="flex ml-auto btn bg-[#C1032F] hover:bg-[#303030] hover:text-white text-white border-0">Add Cart
-                                </button>
+                                <Link>
+                                    <button
+                                        className="flex ml-auto btn bg-[#C1032F] hover:bg-[#303030] hover:text-white text-white border-0">Add Cart
+                                    </button>
+                                </Link>
                             </div>
                         </div>
                     </div>

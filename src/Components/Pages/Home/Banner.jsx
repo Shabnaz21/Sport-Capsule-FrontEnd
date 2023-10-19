@@ -19,7 +19,7 @@ const Banner = () => {
             }}>
                 <div className="hero-overlay bg-[#F2F2F2] bg-opacity-95"></div>
                 <div className="text-center">
-                    <div className='mt-20'>
+                    <div className='mt-20 mb-10'>
                         <h1 className="mb-5 text-5xl font-bold">Your Gateway to Sporty Fashion</h1>
                         <p className="mb-5"> Get Ready to Play in Style with Sport Capsule.</p>
                         <Link to='/register'><button className="btn bg-[#C1032F] hover:bg-[#303030] hover:text-white text-white border-0">Get Started</button></Link>

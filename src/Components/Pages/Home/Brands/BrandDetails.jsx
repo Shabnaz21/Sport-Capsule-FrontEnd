@@ -2,11 +2,15 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 // Import Swiper styles
 import 'swiper/css';
-import 'swiper/css/pagination';
+import 'swiper/css/effect-fade';
 import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+
 import './styles.css';
+
 // import required modules
-import { Pagination } from 'swiper/modules';
+import { EffectFade, Navigation, Pagination } from 'swiper/modules';
+
 import { useEffect, useState } from 'react';
 import ProductCard from '../../Products/ProductCard';
 import { useLoaderData } from 'react-router-dom';
@@ -30,21 +34,24 @@ const BrandDetails = () => {
         <div>
             <div>
                 {/* slider */}
-                <Swiper
+                <Swiper 
+                    spaceBetween={30}
+                    effect={'fade'}
+                    navigation={true}
                     pagination={{
-                        dynamicBullets: true,
+                        clickable: true,
                     }}
-                    modules={[Pagination]}
-                    className="mySwiper"
+                    modules={[EffectFade, Navigation, Pagination]}
+                    className="mySwiper min-h-screen"
                 >
                     <SwiperSlide>
-                        <img  className='h-auto' src="https://i.ibb.co/HpY564z/black-friday-limited-sale-background-with-offer-details-1017-40927.jpg" />
+                        <img className='min-h-screen' src={brandsData.ads_1} />
                     </SwiperSlide>
                     <SwiperSlide>
-                        <img  className='h-auto' src="https://i.ibb.co/k66FLQ2/christmas-composition-paper-cut-style-sale-banner-background-255246-1232.png" />
+                        <img className='min-h-screen' src={brandsData.ads_2} />
                     </SwiperSlide>
                     <SwiperSlide>
-                        <img  className='h-auto'src="https://i.ibb.co/HVrndkb/gradient-colorful-sale-background-52683-57679.jpg" />
+                        <img className='min-h-screen' src={brandsData.ads_3} />
                     </SwiperSlide>
                     
                 </Swiper>
