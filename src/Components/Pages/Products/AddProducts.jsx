@@ -1,5 +1,46 @@
+import Swal from "sweetalert2";
 
 const AddProducts = () => {
+    const handleAddProduct = event => {
+        event.preventDefault();
+        const form = event.target;
+        const name = form.name.value;
+        const brand = form.brand.value;
+        const price = form.price.value;
+        const rating = form.rating.value;
+        const type = form.type.value;
+        const description = form.description.value;
+        const photo = form.photo.value;
+        const newProduct = { name, brand, price, rating, type, description, photo }
+        console.log(newProduct);
+        form.reset();
+
+        //send Data
+        fetch('http://localhost:5000/products', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(newProduct)
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Network response was not ok, status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log(data);
+                if (data.insertedId) {
+                    Swal.fire({
+                        title: 'success',
+                        text: 'New Product added successfully',
+                        icon: 'success',
+                        confirmButtonText: 'Done'
+                    })
+                }
+            })
+    }
     return (
         <>
             <div className="container mx-auto m-20">
@@ -9,7 +50,7 @@ const AddProducts = () => {
                         <p className="lg:mx-36">Share product details, images, and descriptions to showcase your sportswear creations. Our platform makes it easy for you to connect with fashion enthusiasts and share your unique designs with the world.</p>
                     </div>
                     <div>
-                        <form className=" lg:mx-40 mt-10 space-y-3">
+                        <form onSubmit={handleAddProduct}  className=" lg:mx-40 mt-10 space-y-3">
                             <div className="md:flex gap-20 ">
                                 <div className="form-control w-96">
                                     <label className="label">
@@ -24,7 +65,7 @@ const AddProducts = () => {
                                         <span className="text-xl font-semibold">Brand Name</span>
                                     </label>
                                     <label className="input-group">
-                                        <input type="text" name='chef' placeholder="Enter Brand Name" className="input p-3 w-full input-bordered" />
+                                        <input type="text" name='brand' placeholder="Enter Brand Name" className="input p-3 w-full input-bordered" />
                                     </label>
                                 </div>
                             </div>
