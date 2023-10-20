@@ -12,6 +12,7 @@ import PrivateRoutes from "./PrivateRoutes";
 import Login from "../../Pages/auth/Login";
 import Register from "../../Pages/auth/Register";
 import MyCart from "../../Pages/Shopping/MyCart";
+import Contact from "../../Pages/Contact/Contact";
 
 
 const router = createBrowserRouter([
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
             {
                 path: '/shopping',
                 element:<PrivateRoutes><MyCart></MyCart></PrivateRoutes>
+            },
+            {
+                path: '/contact',
+                element:<Contact></Contact>
             }
         ]
     },

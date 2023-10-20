@@ -16,6 +16,7 @@ const Navbar = () => {
     const menus = <>
         <li><NavLink to='/'>Home</NavLink> </li>
         <li><NavLink to='/add-products'>Add Products</NavLink> </li>
+        <li><NavLink to='/contact'>Contact</NavLink> </li>
         <li><NavLink to='/register'>Register</NavLink></li>
     </>
     const cart = <>
