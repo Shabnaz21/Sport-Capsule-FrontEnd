@@ -16,7 +16,7 @@ const AddProducts = () => {
         form.reset();
 
         //send Data
-        fetch('http://localhost:5000/products', {
+        fetch('https://sport-capsule-server-c1vpi0n4o-shabnaz21s-projects.vercel.app/products', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -50,7 +50,7 @@ const AddProducts = () => {
                         <p className="lg:mx-36">Share product details, images, and descriptions to showcase your sportswear creations. Our platform makes it easy for you to connect with fashion enthusiasts and share your unique designs with the world.</p>
                     </div>
                     <div>
-                        <form onSubmit={handleAddProduct}  className=" lg:mx-40 mt-10 space-y-3">
+                        <form onSubmit={handleAddProduct} className=" lg:mx-40 mt-10 space-y-3">
                             <div className="md:flex gap-20 ">
                                 <div className="form-control w-96">
                                     <label className="label">

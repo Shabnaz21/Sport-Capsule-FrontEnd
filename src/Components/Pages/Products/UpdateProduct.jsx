@@ -5,7 +5,7 @@ const UpdateProduct = () => {
     const productData = useLoaderData();
     const { _id, name, brand, price, rating, type, photo } = productData;
 
-    const handleUpdateProduct = e => { 
+    const handleUpdateProduct = e => {
         e.preventDefault();
         const form = e.target;
         const name = form.name.value;
@@ -18,7 +18,7 @@ const UpdateProduct = () => {
         console.log(updateProduct);
         form.reset();
 
-        fetch(`http://localhost:5000/products/${_id}`, {
+        fetch(`https://sport-capsule-server-c1vpi0n4o-shabnaz21s-projects.vercel.app/products/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -57,7 +57,7 @@ const UpdateProduct = () => {
                                         <span className="text-xl font-semibold">Name</span>
                                     </label>
                                     <label className="input-group ">
-                                        <input type="text" name='name' defaultValue={name}  placeholder="Enter Product Name" className="input p-3 w-full input-bordered" />
+                                        <input type="text" name='name' defaultValue={name} placeholder="Enter Product Name" className="input p-3 w-full input-bordered" />
                                     </label>
                                 </div>
                                 <div className="form-control w-96">
@@ -65,7 +65,7 @@ const UpdateProduct = () => {
                                         <span className="text-xl font-semibold">Brand Name</span>
                                     </label>
                                     <label className="input-group">
-                                        <input type="text" name='brand' defaultValue={brand}  placeholder="Enter Brand Name" className="input p-3 w-full input-bordered" />
+                                        <input type="text" name='brand' defaultValue={brand} placeholder="Enter Brand Name" className="input p-3 w-full input-bordered" />
                                     </label>
                                 </div>
                             </div>
@@ -95,7 +95,7 @@ const UpdateProduct = () => {
                                         <span className="text-xl font-semibold">Type</span>
                                     </label>
                                     <label className="input-group ">
-                                        <input type="text" name='type' defaultValue={type}  placeholder="Enter Product's Type" className="input p-3 w-full input-bordered" />
+                                        <input type="text" name='type' defaultValue={type} placeholder="Enter Product's Type" className="input p-3 w-full input-bordered" />
                                     </label>
                                 </div>
                                 <div className="form-control w-96">

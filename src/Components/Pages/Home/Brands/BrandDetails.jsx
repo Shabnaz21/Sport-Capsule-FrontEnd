@@ -17,24 +17,24 @@ import { useLoaderData } from 'react-router-dom';
 
 const BrandDetails = () => {
     const brandsData = useLoaderData();
-    const brandName=brandsData.name;
+    const brandName = brandsData.name;
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/products')
+        fetch('https://sport-capsule-server-c1vpi0n4o-shabnaz21s-projects.vercel.app/products')
             .then(response => response.json())
             .then(data => {
                 const remainingProducts = data.filter(product => product.brand === brandName);
                 setProducts(remainingProducts);
             })
-        
+
     }, [brandName])
-    
+
     return (
         <div>
             <div>
                 {/* slider */}
-                <Swiper 
+                <Swiper
                     spaceBetween={30}
                     effect={'fade'}
                     navigation={true}
@@ -53,7 +53,7 @@ const BrandDetails = () => {
                     <SwiperSlide>
                         <img className='min-h-screen' src={brandsData.ads_3} />
                     </SwiperSlide>
-                    
+
                 </Swiper>
             </div>
             <div className='container mx-auto mt-20'>

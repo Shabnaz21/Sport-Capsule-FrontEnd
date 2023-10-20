@@ -24,7 +24,7 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>,
-                loader: () => fetch("http://localhost:5000/brands"),
+                loader: () => fetch("https://sport-capsule-server-c1vpi0n4o-shabnaz21s-projects.vercel.app/brands"),
             },
             {
                 path: '/add-products',
@@ -33,33 +33,33 @@ const router = createBrowserRouter([
             {
                 path: "/:id",
                 element: <Brands></Brands>,
-                loader: ({ params }) => fetch(`http://localhost:5000/brands/${params.id}`),
+                loader: ({ params }) => fetch(`https://sport-capsule-server-c1vpi0n4o-shabnaz21s-projects.vercel.app/brands/${params.id}`),
             },
             {
                 path: '/product-details/:id',
                 element: <PrivateRoutes><ProductDetails></ProductDetails></PrivateRoutes>,
-                loader: ({ params }) => fetch(`http://localhost:5000/products/${params.id}`)
+                loader: ({ params }) => fetch(`https://sport-capsule-server-c1vpi0n4o-shabnaz21s-projects.vercel.app/products/${params.id}`)
             },
             {
                 path: '/product-update/:id',
                 element: <PrivateRoutes><UpdateProduct></UpdateProduct></PrivateRoutes>,
-                loader: ({ params }) => fetch(`http://localhost:5000/products/${params.id}`)
+                loader: ({ params }) => fetch(`https://sport-capsule-server-c1vpi0n4o-shabnaz21s-projects.vercel.app/products/${params.id}`)
             },
             {
                 path: '/sign-up',
-                element:<Login></Login>,
+                element: <Login></Login>,
             },
             {
                 path: '/register',
-                element:<Register></Register>
+                element: <Register></Register>
             },
             {
                 path: '/shopping',
-                element:<PrivateRoutes><MyCart></MyCart></PrivateRoutes>
+                element: <PrivateRoutes><MyCart></MyCart></PrivateRoutes>
             },
             {
                 path: '/contact',
-                element:<Contact></Contact>
+                element: <Contact></Contact>
             }
         ]
     },
