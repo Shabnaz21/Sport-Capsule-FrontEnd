@@ -1,5 +1,40 @@
-const ProductCard = ({ product }) => {
-    const { _id, name, brand, price, type, photo } = product;
+import Swal from "sweetalert2";
+
+const ProductCard = ({ product, products, setProducts }) => {
+    const {  name, brand, price, type, photo } = product;
+    const handleDelete = name => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        })
+            .then((result) => {
+                if (result.isConfirmed) {
+                    fetch(`http://localhost:5000/carts/${name}`, {
+                        method: 'DELETE'
+
+                    }).then(res => res.json()
+                        .then(data => {
+                            console.log(data);
+                            if (data.deletedCount > 0) {
+                                Swal.fire(
+                                    'Deleted!',
+                                    'Are you sure that you want to delete it?',
+                                    'success'
+                                )
+                            }
+                        }))
+                    const remaining = products.filter(product => product.name !== name);
+                    console.log(remaining);
+                    setProducts(remaining);
+                }
+            })
+
+    }
     return (
         <div>
             <div className="container mx-auto">
@@ -14,7 +49,7 @@ const ProductCard = ({ product }) => {
                             <p><span className="text-lg font-bold">Rating: </span>{'rating'}</p>
                         </div>
                         <div className="card-actions justify-end">
-                            <button className="btn bg-[#C1032F] text-white hover:bg-[#303030] hover:text-white normal-case">Delete
+                            <button onClick={() => handleDelete(name)} className="btn bg-[#C1032F] text-white hover:bg-[#303030] hover:text-white normal-case">Delete
                             </button>
                         </div>
                     </div>
