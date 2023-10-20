@@ -3,6 +3,7 @@ import Banner from "./Banner";
 import BrandCard from "./Brands/BrandCard";
 import FAQ from "./FAQ";
 import WhyChoose from "./WhyChoose";
+import Testimonials from "./Testimonials";
 
 
 
@@ -11,11 +12,10 @@ const Home = () => {
     return (
         <div>
             <Banner></Banner>
-            
             <div className="container mx-auto w-auto m-10 mt-20 px-5">
-                <div className="-mx-4 flex flex-wrap">
-                    <div className="w-full px-4">
-                        <div className="mx-auto mb-[60px] max-w-[920px] text-center lg:mb-20">
+                <div className=" flex flex-wrap">
+                    <div className="lg:w-full px-4">
+                        <div className="mx-auto mb-[60px] lg:max-w-[920px] text-center lg:mb-20">
                             <h2 className="mb-4 text-2xl px-3 font-bold text-dark font-jost md:text-[40px]">
                                 Our Most Famous Brands
                             </h2>
@@ -35,6 +35,7 @@ const Home = () => {
                 </div>
             </div>
             <WhyChoose></WhyChoose>
+            <Testimonials></Testimonials>
             <FAQ></FAQ>
             
         </div>

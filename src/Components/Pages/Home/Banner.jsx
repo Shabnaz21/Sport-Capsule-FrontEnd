@@ -19,9 +19,9 @@ const Banner = () => {
             }}>
                 <div className="hero-overlay bg-[#F2F2F2] bg-opacity-95"></div>
                 <div className="text-center">
-                    <div className="-mx-4 flex flex-wrap md:mt-20">
+                    <div className=" flex flex-wrap md:mt-20">
                         <div className="w-full px-4">
-                            <div className="mx-auto mb-[60px] max-w-[920px] text-center">
+                            <div className="mx-auto mb-[60px] lg:max-w-[920px] text-center">
                                 <h2 className="mb-4 text-2xl px-3 font-bold text-dark font-jost md:text-[40px]">
                                     Your Gateway to Sporty Fashion
                                 </h2>

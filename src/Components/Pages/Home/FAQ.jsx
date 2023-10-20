@@ -2,7 +2,7 @@ import AccordionItem from "./AccordionItem";
 
 const FAQ = () => {
     return (
-        <section className="relative z-20 overflow-hidden bg-white pt-20 pb-12 lg:pb-[90px]">
+        <section className="relative z-20 overflow-hidden  pt-20 pb-12 lg:pb-[90px]">
             <div className="container mx-auto">
                 <div className="-mx-4 flex flex-wrap">
                     <div className="w-full px-4">
