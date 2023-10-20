@@ -41,7 +41,8 @@ const Register = () => {
 
                 // update profile
                 updateProfile(result.user, {
-                    displayName: name, photoURL: photo
+                    displayName: name,
+                    photoURL: photo
                 })
                     .then()
                     .catch((error) => {

@@ -5,7 +5,7 @@ import { AuthContext } from "../../Hook/AuthProvider/AuthProvider";
 
 const Login = () => {
     const emailRef = useRef(null);
-    const { signIn, resetPassword } = useContext(AuthContext);
+    const { signIn } = useContext(AuthContext);
     const location = useLocation();
     const navigate = useNavigate();
 
@@ -35,21 +35,6 @@ const Login = () => {
                 }
             });
     }
-    const handleForgetPassword = () => {
-        const email = emailRef.current.value;
-        if (!email) {
-            toast.error('Email doesn\'t match')
-            return;
-        }
-        resetPassword(email)
-            .then(() => {
-                toast.warn('please check your email');
-            })
-            .catch((error) => {
-                console.log(error.message);
-            });
-
-    }
 
     return (
         <>
@@ -70,7 +55,7 @@ const Login = () => {
                             <input type="password" name="password" placeholder="Enter Password"
                                 className="w-full input input-bordered" />
                         </div>
-                        <p onClick={handleForgetPassword} className="text-xs text-gray-600 hover:underline hover:text-blue-600">Forget Password?</p>
+                        <p className="text-xs text-gray-600 hover:underline hover:text-blue-600">Forget Password?</p>
                         <div>
                             <button className="btn btn-block hover:bg-[#303030] hover:text-white">Login</button>
                         </div>

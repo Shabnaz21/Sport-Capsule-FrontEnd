@@ -1,11 +1,32 @@
-import { Link, useLoaderData } from "react-router-dom";
+import {  useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const ProductDetails = () => {
     const productData = useLoaderData();
-    
-    console.log(productData);
+    const { _id, name, brand, price, rating, type, description, photo } = productData;
 
-    const { name, brand, price, rating, type, description, photo } = productData;
+    const handleCart = () => {
+        const selectedProduct = { _id, name, brand, price, type, photo };
+        fetch('http://localhost:5000/carts', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(selectedProduct)
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                if (data.insertedId) {
+                    Swal.fire({
+                        title: 'success',
+                        text: 'Successfully Product Add to Cart!',
+                        icon: 'success',
+                        confirmButtonText: 'Great'
+                    })
+                }
+                })
+    }
     return (
         <div className="container mx-auto">
             <div>
@@ -35,24 +56,15 @@ const ProductDetails = () => {
                                     </div>
                                 </div>
                             </div>
-
                             <div className="flex justify-between">
                                 <span className="title-font font-medium text-2xl text-gray-900">$ {price}</span>
-                                <Link>
-                                    <button
-                                        className="flex ml-auto btn bg-[#C1032F] hover:bg-[#303030] hover:text-white text-white border-0">Add Cart
+                                    <button onClick={handleCart} className="flex ml-auto btn bg-[#C1032F] hover:bg-[#303030] hover:text-white text-white border-0">
+                                        Add Cart
                                     </button>
-                                </Link>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div>
-
-                </div>
-            </div>
-            <div>
-                {/* details */}
             </div>
         </div>
     );
