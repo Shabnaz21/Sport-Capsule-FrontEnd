@@ -1,5 +1,4 @@
 import { IoLocationSharp } from "react-icons/io5"
-import { AiOutlineShoppingCart } from "react-icons/ai";
 import { BsTelephone } from "react-icons/bs";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../Hook/AuthProvider/AuthProvider";
@@ -72,8 +71,6 @@ const Navbar = () => {
                             <Link to='/sign-up' className="btn bg-[#C1032F] text-white hover:bg-[#303030] hover:text-white normal-case">Login</Link>
                     )}
                 </div>
-                <div className="divider md:divider-horizontal"></div> 
-                <p className="text-3xl"><AiOutlineShoppingCart></AiOutlineShoppingCart></p>
             </div>
             <hr />
             {/* menu part */}
