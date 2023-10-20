@@ -21,7 +21,7 @@ const BrandDetails = () => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/products')
+        fetch('http://localhost:5001/products')
             .then(response => response.json())
             .then(data => {
                 const remainingProducts = data.filter(product => product.brand === brandName);

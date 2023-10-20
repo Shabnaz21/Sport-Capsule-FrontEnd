@@ -24,7 +24,7 @@ const Register = () => {
                 console.log(result.user);
                 const user = { email, name };
                 //send Data
-                fetch('http://localhost:5000/users', {
+                fetch('http://localhost:5001/users', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -50,12 +50,11 @@ const Register = () => {
                     });
 
             })
-            .catch(error =>
-            {
+            .catch(error => {
                 if (error.code === 'Error (auth/email-already-in-use') {
                     toast.error('Already, You\'r exist!');
                     return ('error.message');
-                } 
+                }
             })
 
         // Password condition

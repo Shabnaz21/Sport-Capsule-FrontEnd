@@ -16,7 +16,7 @@ const AddProducts = () => {
         form.reset();
 
         //send Data
-        fetch('http://localhost:5000/products', {
+        fetch('http://localhost:5001/products', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

@@ -1,18 +1,23 @@
-import {  useLoaderData } from "react-router-dom";
+import { useContext } from "react";
+import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../Hook/AuthProvider/AuthProvider";
 
 const ProductDetails = () => {
     const productData = useLoaderData();
-    const { _id, name, brand, price, rating, type, description, photo } = productData;
+    const { name, brand, price, rating, type, description, photo } = productData;
+    const { user } = useContext(AuthContext);
 
     const handleCart = () => {
-        const selectedProduct = { _id, name, brand, price, type, photo };
-        fetch('http://localhost:5000/carts', {
+        const selectedProduct = {  name, brand, price, type, photo };
+        const userMail = user?.email;
+        const userCart = { ...selectedProduct, email: userMail }
+        fetch('http://localhost:5001/carts', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(selectedProduct)
+            body: JSON.stringify(userCart)
         })
             .then(response => response.json())
             .then(data => {
@@ -25,7 +30,7 @@ const ProductDetails = () => {
                         confirmButtonText: 'Great'
                     })
                 }
-                })
+            })
     }
     return (
         <div className="container mx-auto">
@@ -58,9 +63,9 @@ const ProductDetails = () => {
                             </div>
                             <div className="flex justify-between">
                                 <span className="title-font font-medium text-2xl text-gray-900">$ {price}</span>
-                                    <button onClick={handleCart} className="flex ml-auto btn bg-[#C1032F] hover:bg-[#303030] hover:text-white text-white border-0">
-                                        Add Cart
-                                    </button>
+                                <button onClick={handleCart} className="flex ml-auto btn bg-[#C1032F] hover:bg-[#303030] hover:text-white text-white border-0">
+                                    Add Cart
+                                </button>
                             </div>
                         </div>
                     </div>

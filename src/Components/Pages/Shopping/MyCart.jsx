@@ -4,6 +4,7 @@ import { useState } from "react";
 
 const MyCart = () => {
     const productData = useLoaderData();
+    console.log(productData);
     const [products, setProducts] = useState(productData);
     console.log(productData);
 

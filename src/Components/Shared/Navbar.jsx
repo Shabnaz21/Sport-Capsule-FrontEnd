@@ -6,7 +6,7 @@ import { useContext } from "react";
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
-
+    const id = user?.email
     const handleSignOut = () => {
         logOut()
             .then()
@@ -20,7 +20,7 @@ const Navbar = () => {
         <li><NavLink to='/register'>Register</NavLink></li>
     </>
     const cart = <>
-        <NavLink to='/shopping'><p className="text-md">My cart</p></NavLink>
+        <NavLink to={`/shopping/${id}`}><p className="text-md">My cart</p></NavLink>
     </>
     return (
         <div >

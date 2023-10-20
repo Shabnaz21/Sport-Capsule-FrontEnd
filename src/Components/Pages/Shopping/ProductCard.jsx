@@ -1,7 +1,7 @@
 import Swal from "sweetalert2";
 
 const ProductCard = ({ product, products, setProducts }) => {
-    const {  name, brand, price, type, photo } = product;
+    const { name, brand, price, type, photo } = product;
     const handleDelete = name => {
         Swal.fire({
             title: 'Are you sure?',
@@ -14,7 +14,7 @@ const ProductCard = ({ product, products, setProducts }) => {
         })
             .then((result) => {
                 if (result.isConfirmed) {
-                    fetch(`http://localhost:5000/carts/${name}`, {
+                    fetch(`http://localhost:5001/carts/${name}`, {
                         method: 'DELETE'
 
                     }).then(res => res.json()
@@ -39,7 +39,7 @@ const ProductCard = ({ product, products, setProducts }) => {
         <div>
             <div className="container mx-auto">
                 <div className="card md:card-side bg-base-100 shadow-xl">
-                    <figure><img src={photo} alt={name} className="md:w-96 w-2/3 md:h-60 lg:h-[350px]"/></figure>
+                    <figure><img src={photo} alt={name} className="md:w-96 w-2/3 md:h-60 lg:h-[350px]" /></figure>
                     <div className="card-body">
                         <div className="space-y-2">
                             <h2 className="text-xl"><span className="font-bold">Name:</span> {name}</h2>
@@ -52,7 +52,7 @@ const ProductCard = ({ product, products, setProducts }) => {
                             </button>
                         </div>
                     </div>
-                </div>   
+                </div>
             </div>
         </div>
     );
