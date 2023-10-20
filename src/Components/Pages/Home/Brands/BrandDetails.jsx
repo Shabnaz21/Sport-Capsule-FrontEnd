@@ -21,7 +21,7 @@ const BrandDetails = () => {
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        fetch('https://sport-capsule-server-c1vpi0n4o-shabnaz21s-projects.vercel.app/products')
+        fetch('http://localhost:5000/products')
             .then(response => response.json())
             .then(data => {
                 const remainingProducts = data.filter(product => product.brand === brandName);

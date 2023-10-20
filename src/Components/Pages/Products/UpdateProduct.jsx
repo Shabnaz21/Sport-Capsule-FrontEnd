@@ -18,7 +18,7 @@ const UpdateProduct = () => {
         console.log(updateProduct);
         form.reset();
 
-        fetch(`https://sport-capsule-server-c1vpi0n4o-shabnaz21s-projects.vercel.app/products/${_id}`, {
+        fetch(`http://localhost:5000/products/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

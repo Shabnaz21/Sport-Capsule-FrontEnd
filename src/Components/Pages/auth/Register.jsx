@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import { useContext, useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { updateProfile } from "firebase/auth";
 import { AuthContext } from "../../Hook/AuthProvider/AuthProvider";
+import { ToastContainer, toast } from "react-toastify";
 
 const Register = () => {
     const { createUser, handleGoogleSignIn, handleGithubSignIn } = useContext(AuthContext);
@@ -11,30 +11,50 @@ const Register = () => {
     const [success, setSuccess] = useState('');
     const handleRegister = event => {
         event.preventDefault();
-        const form = new FormData(event.currentTarget);
-        const name = form.get('name');
-        const photo = form.get('photo');
-        const email = form.get('email');
-        const password = form.get('password');
+        const form = event.target;
+        const name = form.name.value;
+        const photo = form.photo.value;
+        const email = form.email.value;
+        const password = form.email.value;
+        form.reset();
 
         // Create User
         createUser(email, password, name, photo)
             .then(result => {
                 console.log(result.user);
+                const user = { email, name };
+                //send Data
+                fetch('http://localhost:5000/users', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(user)
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(data);
+                        if (data.insertedId) {
+                            toast.success('Congratulations!');
+                        }
+                    })
 
                 // update profile
                 updateProfile(result.user, {
                     displayName: name, photoURL: photo
                 })
-                    .then(() => {
-                        console.log('profile updated');
-                    }).catch((error) => {
+                    .then()
+                    .catch((error) => {
                         console.log(error.message);
                     });
 
             })
-            .catch(error => {
-                console.log(error.message);
+            .catch(error =>
+            {
+                if (error.code === 'Error (auth/email-already-in-use') {
+                    toast.error('Already, You\'r exist!');
+                    return ('error.message');
+                } 
             })
 
         // Password condition
@@ -50,7 +70,6 @@ const Register = () => {
         } else {
             setError('');
         }
-        toast.success('Registration successful!')
 
         setSuccess('');
     }
@@ -123,7 +142,7 @@ const Register = () => {
                     </div>
                 </div>
             </div>
-            <ToastContainer />
+            < ToastContainer />
         </>
     );
 };

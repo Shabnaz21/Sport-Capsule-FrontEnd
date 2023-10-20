@@ -57,16 +57,15 @@ const Navbar = () => {
                 <div className="justify-end divide-y-4">
                     {user ? (
                         <>
-                            <div className="flex flex-col">
+                            <div className="flex flex-col text-center">
                                 <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                                     <div className="w-10 rounded-full">
                                         <img width={50} height={50} src={user.photoURL} alt={user.displayName} />
                                     </div>
                                 </label>
-
                                 <p className="text-gray-700 font-semibold">{user.displayName}</p>
                             </div>
-                            <button onClick={handleSignOut} className="btn bg-[#C1032F] hover:bg-[#303030] hover:text-white text-white normal-case">Sign Out</button>
+                            <button onClick={handleSignOut} className="btn ml-5 bg-[#C1032F] hover:bg-[#303030] hover:text-white text-white normal-case">Sign Out</button>
                         </>
                     ) : (
                             <Link to='/sign-up' className="btn bg-[#C1032F] text-white hover:bg-[#303030] hover:text-white normal-case">Login</Link>

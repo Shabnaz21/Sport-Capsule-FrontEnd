@@ -16,19 +16,14 @@ const AddProducts = () => {
         form.reset();
 
         //send Data
-        fetch('https://sport-capsule-server-c1vpi0n4o-shabnaz21s-projects.vercel.app/products', {
+        fetch('http://localhost:5000/products', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
             },
             body: JSON.stringify(newProduct)
         })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`Network response was not ok, status: ${response.status}`);
-                }
-                return response.json();
-            })
+            .then(response => response.json())
             .then(data => {
                 console.log(data);
                 if (data.insertedId) {
