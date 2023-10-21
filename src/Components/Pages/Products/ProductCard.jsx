@@ -9,7 +9,7 @@ const ProductCard = ({ product }) => {
                     <figure><img src={photo} alt={photo} className="lg:w-[300px] w-2/3 md:h-[250px] lg:h-[350px]" /></figure>
                 </div>
                 <div className="card-body">
-                    <div className=" text-left flex  mt-10  mx-8">
+                    <div className=" text-left flex mt-10 mx-8">
                         <div>
                             <h2 className="text-xl"><span className="font-bold">Name:</span> {name}</h2>
                             <p><span className="text-lg font-bold">Band Name: </span>{brand}</p>

@@ -72,7 +72,7 @@ const Register = () => {
 
     return (
         <>
-            <div className="relative flex flex-col justify-center h-screen overflow-hidden mx-7">
+            <div className="relative flex flex-col justify-center h-screen overflow-hidden mx-7 m-10">
                 <div className="w-full p-6 m-auto bg-white rounded-md shadow-md ring-2 ring-gray-800/50 lg:max-w-xl">
                     <p className=" font-jost text-center text-red-950 text-xl lg:text-4xl -ml-4">Create a Account</p>
                     <form onSubmit={handleRegister} className="space-y-4">

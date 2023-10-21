@@ -35,19 +35,19 @@ const ProductDetails = () => {
             })
     }
     return (
-        <div className="container mx-auto">
+        <div className="container mx-auto ">
             <div>
                 {/* summary */}
                 <div className="container px-5 py-24 mx-auto">
                     <div className="lg:w-4/5 mx-auto flex flex-wrap">
                         <img className="lg:w-1/2 lg:h-1/2 w-full object-cover object-center rounded border border-gray-200"
                             src={photo} />
-                        <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
-                            <h2 className="text-sm title-font text-gray-500 tracking-widest">{brand}</h2>
-                            <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">{name}</h1>
+                        <div className="lg:w-1/2 w-full lg:pl-10 bg-base-100 lg:py-6 mt-6 lg:mt-0 pr-5">
+                            <h2 className="text-sm title-font text-gray-500 ">{brand}</h2>
+                            <h1 className="text-3xl title-font font-medium mb-1">{name}</h1>
                             <p className="leading-relaxed">{description}</p>
                             <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-200 mb-5 justify-between">
-                                <p><span className="title-font font-medium text-lg text-gray-900">Types:</span> {type}</p>
+                                <p><span className="title-font font-medium text-lg">Types:</span> {type}</p>
                                 <div className="flex items-center gap-2">
                                     <p className="text-xl font-bold">
                                         {rating}
@@ -64,7 +64,7 @@ const ProductDetails = () => {
                                 </div>
                             </div>
                             <div className="flex justify-between">
-                                <span className="title-font font-medium text-2xl text-gray-900">$ {price}</span>
+                                <span className="title-font font-medium text-2xl">$ {price}</span>
                                 <button onClick={handleCart} className="flex ml-auto btn bg-[#C1032F] hover:bg-[#303030] hover:text-white text-white border-0">
                                     Add Cart
                                 </button>
