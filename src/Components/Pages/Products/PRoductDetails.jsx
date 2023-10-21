@@ -11,7 +11,9 @@ const ProductDetails = () => {
     const handleCart = () => {
         const selectedProduct = {  name, brand, price, type, photo };
         const userMail = user?.email;
-        const userCart = { ...selectedProduct, email: userMail }
+        const userName = user?.displayName;
+
+        const userCart = { ...selectedProduct, email: userMail, userName }
         fetch('http://localhost:5001/carts', {
             method: 'POST',
             headers: {

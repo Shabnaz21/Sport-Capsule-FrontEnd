@@ -6,7 +6,6 @@ const MyCart = () => {
     const productData = useLoaderData();
     console.log(productData);
     const [products, setProducts] = useState(productData);
-    console.log(productData);
 
     return (
         <div className="container mx-auto mt-10 mb-20">

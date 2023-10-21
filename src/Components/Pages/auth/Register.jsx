@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import { useContext, useState } from "react";
 import 'react-toastify/dist/ReactToastify.css';
-import { updateProfile } from "firebase/auth";
 import { AuthContext } from "../../Hook/AuthProvider/AuthProvider";
 import { ToastContainer, toast } from "react-toastify";
+import { updateProfile } from "firebase/auth";
 
 const Register = () => {
     const { createUser, handleGoogleSignIn, handleGithubSignIn } = useContext(AuthContext);
@@ -19,25 +19,10 @@ const Register = () => {
         form.reset();
 
         // Create User
-        createUser(email, password, name, photo)
+        createUser(email, password, 
+            name, photo)
             .then(result => {
                 console.log(result.user);
-                const user = { email, name };
-                //send Data
-                fetch('http://localhost:5001/users', {
-                    method: 'POST',
-                    headers: {
-                        'content-type': 'application/json'
-                    },
-                    body: JSON.stringify(user)
-                })
-                    .then(response => response.json())
-                    .then(data => {
-                        console.log(data);
-                        if (data.insertedId) {
-                            toast.success('Congratulations!');
-                        }
-                    })
 
                 // update profile
                 updateProfile(result.user, {
@@ -48,14 +33,25 @@ const Register = () => {
                     .catch((error) => {
                         console.log(error.message);
                     });
-
+                
+                toast.success('Congratulations!');
             })
             .catch(error => {
                 if (error.code === 'Error (auth/email-already-in-use') {
                     toast.error('Already, You\'r exist!');
                     return ('error.message');
                 }
+                
             })
+
+            .catch(error => {
+                console.log(error.message);
+            })
+        
+        if (!email) {
+            setError('You are Already exist');
+            return;
+        }
 
         // Password condition
         if (password.length < 6) {
@@ -68,9 +64,9 @@ const Register = () => {
             setError('Password cannot contain special characters');
             return;
         } else {
-            setError('');
+            setError('Maybe you are exist');
         }
-
+        setError('');
         setSuccess('');
     }
 
@@ -84,7 +80,7 @@ const Register = () => {
                             <label className="label">
                                 <span className="text-base label-text">Name</span>
                             </label>
-                            <input type="text" name='name' placeholder="Name" className="w-full input input-bordered" />
+                            <input type="text" name='name' placeholder="Give Your Short Name" className="w-full input input-bordered" />
                         </div>
                         <div>
                             <label className="label">
