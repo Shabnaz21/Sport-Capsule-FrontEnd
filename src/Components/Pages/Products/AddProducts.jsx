@@ -16,7 +16,7 @@ const AddProducts = () => {
         form.reset();
 
         //send Data
-        fetch('http://localhost:5001/products', {
+        fetch('https://sport-capsule-server.vercel.app/products', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

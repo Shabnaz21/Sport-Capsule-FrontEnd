@@ -9,12 +9,12 @@ const ProductDetails = () => {
     const { user } = useContext(AuthContext);
 
     const handleCart = () => {
-        const selectedProduct = {  name, brand, price, type, photo };
+        const selectedProduct = { name, brand, price, type, photo };
         const userMail = user?.email;
         const userName = user?.displayName;
 
         const userCart = { ...selectedProduct, email: userMail, userName }
-        fetch('http://localhost:5001/carts', {
+        fetch('https://sport-capsule-server.vercel.app/carts', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

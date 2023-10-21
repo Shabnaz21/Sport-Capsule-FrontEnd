@@ -24,7 +24,7 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>,
-                loader: () => fetch("http://localhost:5001/brands"), 
+                loader: () => fetch("https://sport-capsule-server.vercel.app/brands"),
             },
             {
                 path: '/add-products',
@@ -33,17 +33,17 @@ const router = createBrowserRouter([
             {
                 path: "/:id",
                 element: <Brands></Brands>,
-                loader: ({ params }) => fetch(`http://localhost:5001/brands/${params.id}`),
+                loader: ({ params }) => fetch(`https://sport-capsule-server.vercel.app/brands/${params.id}`),
             },
             {
                 path: '/product-details/:id',
                 element: <PrivateRoutes><ProductDetails></ProductDetails></PrivateRoutes>,
-                loader: ({ params }) => fetch(`http://localhost:5001/products/${params.id}`)
+                loader: ({ params }) => fetch(`https://sport-capsule-server.vercel.app/products/${params.id}`)
             },
             {
                 path: '/product-update/:id',
                 element: <PrivateRoutes><UpdateProduct></UpdateProduct></PrivateRoutes>,
-                loader: ({ params }) => fetch(`http://localhost:5001/products/${params.id}`)
+                loader: ({ params }) => fetch(`https://sport-capsule-server.vercel.app/products/${params.id}`)
             },
             {
                 path: '/sign-up',
@@ -56,7 +56,7 @@ const router = createBrowserRouter([
             {
                 path: '/shopping/:id',
                 element: <PrivateRoutes><MyCart></MyCart></PrivateRoutes>,
-                loader: ({ params }) => fetch(`http://localhost:5001/carts/${params.id}`)
+                loader: ({ params }) => fetch(`https://sport-capsule-server.vercel.app/carts/${params.id}`)
 
             },
             {
