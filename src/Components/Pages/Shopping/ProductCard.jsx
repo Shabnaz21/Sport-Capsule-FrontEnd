@@ -1,9 +1,8 @@
 import Swal from "sweetalert2";
 
 const ProductCard = ({ product, products, setProducts }) => {
-    const { _id, name, brand, price, type, photo } = product;
-    const handleDelete = _id => {
-        console.log(_id);
+    const {  name, brand, price, type, photo } = product;
+    const handleDelete = name => {
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
@@ -15,7 +14,7 @@ const ProductCard = ({ product, products, setProducts }) => {
         })
             .then((result) => {
                 if (result.isConfirmed) {
-                    fetch(`https://sport-capsule-server.vercel.app/carts/${_id}`, {
+                    fetch(`https://sport-capsule-server.vercel.app/carts/${name}`, {
                         method: 'DELETE'
 
                     }).then(res => res.json()
@@ -29,7 +28,7 @@ const ProductCard = ({ product, products, setProducts }) => {
                                 )
                             }
                         }))
-                    const remaining = products.filter(product => product._id !== _id);
+                    const remaining = products.filter(product => product.name !== name);
                     console.log(remaining);
                     setProducts(remaining);
                 }
@@ -49,7 +48,7 @@ const ProductCard = ({ product, products, setProducts }) => {
                             <p><span className="text-lg font-bold">Price: </span>$ {price}</p>
                         </div>
                         <div className="card-actions justify-end">
-                            <button onClick={() => handleDelete(_id)} className="btn bg-[#C1032F] text-white hover:bg-[#303030] hover:text-white normal-case">Delete
+                            <button onClick={() => handleDelete(name)} className="btn bg-[#C1032F] text-white hover:bg-[#303030] hover:text-white normal-case">Delete
                             </button>
                         </div>
                     </div>
