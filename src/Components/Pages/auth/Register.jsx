@@ -15,25 +15,22 @@ const Register = () => {
         const name = form.name.value;
         const photo = form.photo.value;
         const email = form.email.value;
-        const password = form.email.value;
+        const password = form.password.value;
         form.reset();
 
         // Create User
         createUser(email, password, 
             name, photo)
             .then(result => {
-                console.log(result.user);
 
                 // update profile
                 updateProfile(result.user, {
                     displayName: name,
                     photoURL: photo
-                })
-                    .then()
+                }).then()
                     .catch((error) => {
                         console.log(error.message);
                     });
-                
                 toast.success('Congratulations!');
             })
             .catch(error => {
@@ -46,12 +43,9 @@ const Register = () => {
 
             .catch(error => {
                 console.log(error.message);
+
             })
         
-        if (!email) {
-            setError('You are Already exist');
-            return;
-        }
 
         // Password condition
         if (password.length < 6) {
@@ -72,7 +66,7 @@ const Register = () => {
 
     return (
         <>
-            <div className="relative flex flex-col justify-center h-screen overflow-hidden mx-7 m-10">
+            <div className="relative flex flex-col justify-center h-screen overflow-hidden mx-7 mb-10">
                 <div className="w-full p-6 m-auto bg-white rounded-md shadow-md ring-2 ring-gray-800/50 lg:max-w-xl">
                     <p className=" font-jost text-center text-red-950 text-xl lg:text-4xl -ml-4">Create a Account</p>
                     <form onSubmit={handleRegister} className="space-y-4">

@@ -13,7 +13,7 @@ const Login = () => {
         event.preventDefault();
         const form = event.target;
         const email = form.email.value;
-        const password = form.email.value;
+        const password = form.password.value;
         form.reset();
 
         // signIn User
@@ -29,7 +29,10 @@ const Login = () => {
                 if (error.code === 'auth/invalid-login-credentials') {
                     toast.error('Invalid login');
                     return ('error.message');
-                } else {
+                } else if (error.code === "auth/wrong-password" || error.code === "auth/user-not-found") {
+                    toast.error("Invalid email or password. Please try again.");
+                }
+                else {
                     toast.warn('An error occurred. Please try again later.');
                     return;
                 }

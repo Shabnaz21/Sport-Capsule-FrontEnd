@@ -1,8 +1,8 @@
 import Swal from "sweetalert2";
 
 const ProductCard = ({ product, products, setProducts }) => {
-    const { name, brand, price, type, photo } = product;
-    const handleDelete = name => {
+    const { _id, brand, price, type, photo } = product;
+    const handleDelete = _id => {
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
@@ -14,7 +14,7 @@ const ProductCard = ({ product, products, setProducts }) => {
         })
             .then((result) => {
                 if (result.isConfirmed) {
-                    fetch(`http://localhost:5001/carts/${name}`, {
+                    fetch(`http://localhost:5001/carts/${_id}`, {
                         method: 'DELETE'
 
                     }).then(res => res.json()
@@ -28,7 +28,7 @@ const ProductCard = ({ product, products, setProducts }) => {
                                 )
                             }
                         }))
-                    const remaining = products.filter(product => product.name !== name);
+                    const remaining = products.filter(product => product._id !== _id);
                     console.log(remaining);
                     setProducts(remaining);
                 }
@@ -39,16 +39,16 @@ const ProductCard = ({ product, products, setProducts }) => {
         <div>
             <div className="container mx-auto">
                 <div className="card md:card-side bg-base-100 shadow-xl">
-                    <figure><img src={photo} alt={name} className="md:w-96 w-2/3 md:h-60 lg:h-[350px]" /></figure>
+                    <figure><img src={photo} alt={_id} className="md:w-96 w-2/3 md:h-60 lg:h-[350px]" /></figure>
                     <div className="card-body">
                         <div className="space-y-2">
-                            <h2 className="text-xl"><span className="font-bold">Name:</span> {name}</h2>
+                            <h2 className="text-xl"><span className="font-bold">Name:</span> {_id}</h2>
                             <p><span className="text-lg font-bold">Band Name: </span>{brand}</p>
                             <p><span className="text-lg font-bold">Type: </span>{type}</p>
                             <p><span className="text-lg font-bold">Price: </span>$ {price}</p>
                         </div>
                         <div className="card-actions justify-end">
-                            <button onClick={() => handleDelete(name)} className="btn bg-[#C1032F] text-white hover:bg-[#303030] hover:text-white normal-case">Delete
+                            <button onClick={() => handleDelete(_id)} className="btn bg-[#C1032F] text-white hover:bg-[#303030] hover:text-white normal-case">Delete
                             </button>
                         </div>
                     </div>
