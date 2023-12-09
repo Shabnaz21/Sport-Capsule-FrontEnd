@@ -1,6 +1,6 @@
 # Sport Capsule Front-End
 
-[Server side](https://github.com/programming-hero-web-course-4/b8a10-brandshop-server-side-Shabnaz21) | [Live Link](https://sport-capsule.web.app/)
+[Server side](https://github.com/Shabnaz21/Sport-Capsule-Backend) | [Live Link](https://sport-capsule.web.app)
 
 
 ## Project Features
@@ -29,12 +29,19 @@ Communicates Mongodb with the server-side for data storage, retrieval, and updat
 - 404 Page: 
  Custom "Not Found" page is available to guide users.
 
-
 ## Technology Stack
+- React toastify
+- React Icons
+- Sweet Toast
+- React Helmet
+- Swiper
 
-- HTML
-- Tailwind CSS
-- React
-- JavaScript
-- Mongodb for Database
-- Firebase for Authentication
+## UI
+- DaisyUI
+
+
+## Authentication
+- Firebase
+
+## Database
+Mongodb
